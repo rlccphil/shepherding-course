@@ -319,7 +319,7 @@ const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&qu
 const cnt=c=>{const d=done();return COURSES[c].d.filter((_,i)=>d[c+i]).length};
 const home=()=>`<div class="card"><h3>Welcome back, ${esc(user.name.split(' ')[0])}</h3>`+
   ['heart','art'].map(c=>{const n=cnt(c),L=COURSES[c].d.length;return`<p style="margin:14px 0 0"><strong>${COURSES[c].n}</strong></p><div class="prog"><i style="width:${Math.round(n/L*100)}%"></i></div><small>${n} of ${L} complete</small>`}).join('')+
-  `<div class="row"><a class="btn" href="#heart">Heart course</a><a class="btn" href="#art">Art course</a><a class="btn alt" href="#practicum">Practicum</a></div></div><div class="tas-wrapper" style="margin-top:18px">${LANDING}</div>`;
+  `<div class="row"><a class="btn" href="#heart">Heart</a><a class="btn" href="#art">Art</a><a class="btn alt" href="#practicum">Practicum</a></div></div><div class="tas-wrapper" style="margin-top:18px">${LANDING}</div>`;
 function list(c){const d=done();
   return`<div class="card"><h2>${COURSES[c].n}</h2><p>Work through each lesson prayerfully, in order.</p>`+
   COURSES[c].d.map((l,i)=>`<a class="lesson" href="#${c}-${i}"><span class="num ${d[c+i]?'done':''}">${d[c+i]?'✓':i}</span><span><strong>${i?(c=='heart'?'Lesson '+i+': ':'')+esc(l.t):'Welcome: '+esc(l.t)}</strong><small>${esc(l.s)}</small></span></a>`).join('')+`</div>`}
